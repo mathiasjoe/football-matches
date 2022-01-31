@@ -1,28 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-import SearchParams from './SearchParams';
+import "./App.css";
+import "react-datepicker/dist/react-datepicker.css";
+import React from "react";
+import SearchParams from "./SearchParams";
+import Matches from "./Matches";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
+  // const [selectedDate, setSelectedDate] = useState(null)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-          <div>
+      <Router>
+        <Route>
           <SearchParams />
-
-          </div>
-        </p>
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
+        </Route>
+        <Route
+          path="/competitions/$={SearchParams}/fixtures"
+          component={Matches}
+        />
+      </Router>
     </div>
   );
 }

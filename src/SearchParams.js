@@ -1,61 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const COMPETITIONS = ["WC","CL","BL1","DED","BSA","PD","FL1","ELC","PPL","EC","SA","PL","CLI"]
 const SearchParams = () => {
+  const [selectedCompetition, setSelectedCompetition] = useState("PL");
 
-    const [competition, setCompetition] = useState("");
-    const [date, setDate] = useState("");
-    const date = [];
-
-    useEffect(() => {
-        requestMatches();
-    })
-
-    async function requestMatches(){
-        const res = await fetch(
-            `API LINK til matches pr dag, competition=${competition}%date=${date}`
-        )
-    }
-
-    return (
-        <div className="search-params">
-            <form>
-                <label htmlFor="competitions">
-                    Competition
-                    <select id="competition" 
-                    value={competition}
-                    onChange={e => setCompetition(e.target.value)}
-                    onBlur={e => setCompetition(e.target.value)}>
-                    <option />
-                    {
-                        COMPETITIONS.map( competition =>(
-                            <option value={competition} key={competition}>
-                                {competition}
-                            </option>
-                        ))
-                    }
-                    </select>
-                </label>
-                <label htmlFor="date">
-                    Date
-                    <select id="date" 
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
-                    onBlur={e => setDate(e.target.value)}>
-                    <option />
-                    {
-                        dates.map( date =>(
-                            <option value={date} key={date}>
-                                {date}
-                            </option>
-                        ))
-                    }
-                    </select>
-                </label>
-                <button>Submit</button>
-            </form>
-        </div>
-    )
-}
+  return (
+    <div className="search-params">
+      <form>
+        <select
+          name="select-competition"
+          id="select-competition"
+          defaultValue={selectedCompetition}
+          onChange={(e) => setSelectedCompetition(e.target.value)}
+        >
+          <option value="WC"> FIFA World Cup</option>
+          <option value="CL"> UEFA Champions League</option>
+          <option value="BL1"> Bundesliga</option>
+          <option value="DED"> Eredivisie</option>
+          <option value="BSA"> Campeonato Brasileiro Série A</option>
+          <option value="PD"> Primera Division</option>
+          <option value="FL1"> Ligue 1</option>
+          <option value="ELC"> Championship</option>
+          <option value="PPL"> Primeira Liga</option>
+          <option value="EC"> European Championship</option>
+          <option value="SA"> Serie A</option>
+          <option value="CLI"> Copa Libertadores</option>
+          <option value="PL"> Premier League</option>
+        </select>
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+};
 
 export default SearchParams;
