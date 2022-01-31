@@ -10,15 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Route>
-          <SearchParams />
-        </Route>
-        <Route
-          path="/competitions/$={SearchParams}/fixtures"
-          component={Matches}
-        />
-      </Router>
+      <Matches />
     </div>
   );
 }

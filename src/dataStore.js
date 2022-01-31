@@ -13,10 +13,9 @@ const dataStore = {
   matches: () => {
     return axios.get(request.URL + "/matches", request);
   },
-  competition: (competition) => {
+  competition: (id) => {
     return axios.get(
       request.URL + request.URL + "competitions/" + id + "/matches",
-      request,
       request
     );
   },
