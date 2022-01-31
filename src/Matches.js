@@ -1,17 +1,22 @@
 import dataStore from "./dataStore";
 import React, { Component } from "react";
 import { Table } from "semantic-ui-react";
+import Loading from "./Loading";
 
 class Matches extends Component {
   state = { data: [], loading: true };
 
-  componentWillReceiveProps(newProps) {
-    this.fetchFixtures(newProps.match.params.id);
+  componentHasReceivedProps() {
+    this.fetchMatches(this.props.match.params);
   }
 
-  fetchMatches(id) {
+  componentWillReceiveProps(newProps) {
+    this.fetchMatches(newProps.match.params);
+  }
+
+  fetchMatches() {
     this.setState({ loading: true });
-    dataStore.matches(id).then((res) => {
+    dataStore.matches().then((res) => {
       console.log(res);
       this.setState({
         data: res.data.matches,
@@ -88,7 +93,7 @@ class Matches extends Component {
   }
 
   render() {
-    return <div>{this.createTable}</div>;
+    return <div>{this.state.loading ? <Loading /> : this.createTable}</div>;
   }
 }
 

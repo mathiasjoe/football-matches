@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const request = {
-  URL: "https://api.football-data.org/v1/",
+  URL: "https://api.football-data.org/v2/",
   responseType: "json",
   timeout: 15000,
   headers: {
@@ -10,12 +10,13 @@ const request = {
 };
 
 const dataStore = {
-  matches: (id) => {
-    return axios.get(request.URL + "competitions/" + id + "/fixtures", request);
+  matches: () => {
+    return axios.get(request.URL + "/matches", request);
   },
-  teams: (competition) => {
+  competition: (competition) => {
     return axios.get(
-      request.URL + "competitions/" + competition + "/teams",
+      request.URL + request.URL + "competitions/" + id + "/matches",
+      request,
       request
     );
   },
