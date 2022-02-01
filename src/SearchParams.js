@@ -1,35 +1,33 @@
-import { useState } from "react";
+import React from "react";
+import DateSelector from "./DateSelector";
+import "./SearchParams.css";
 
-const SearchParams = () => {
-  const [selectedCompetition, setSelectedCompetition] = useState("PL");
+export default function SearchParams({
+  allCompetitions,
+  selectedCompetition,
+  selectedDate,
+  setSelectedCompetition,
+  setSelectedDate,
+}) {
+  // console.log("SearchParams", { selectedCompetition, selectedDate });
 
   return (
     <div className="search-params">
       <form>
+        <header>Click to select a competition</header>
         <select
           name="select-competition"
           id="select-competition"
           defaultValue={selectedCompetition}
           onChange={(e) => setSelectedCompetition(e.target.value)}
         >
-          <option value="WC"> FIFA World Cup</option>
-          <option value="CL"> UEFA Champions League</option>
-          <option value="BL1"> Bundesliga</option>
-          <option value="DED"> Eredivisie</option>
-          <option value="BSA"> Campeonato Brasileiro Série A</option>
-          <option value="PD"> Primera Division</option>
-          <option value="FL1"> Ligue 1</option>
-          <option value="ELC"> Championship</option>
-          <option value="PPL"> Primeira Liga</option>
-          <option value="EC"> European Championship</option>
-          <option value="SA"> Serie A</option>
-          <option value="CLI"> Copa Libertadores</option>
-          <option value="PL"> Premier League</option>
+          {allCompetitions.map(([id, name]) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
         </select>
-        <button>Submit</button>
       </form>
     </div>
   );
-};
-
-export default SearchParams;
+}

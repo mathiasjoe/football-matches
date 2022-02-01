@@ -1,18 +1,14 @@
 table,
 th,
 td {
-  border-collapse: collapse;
-  border: 1px solid black;
-  padding: 20px;
-  width: 60%;
+  margin-right: auto;
+  margin-left: 0px;
 }
 
 th,
 td {
-  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  padding: 12px;
   text-align: left;
-}
-
-tr:nth-child(even) {
-  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
 }

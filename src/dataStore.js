@@ -9,14 +9,39 @@ const request = {
 };
 
 const dataStore = {
-  matches: () => {
-    return axios.get(request.URL + "/matches", request);
+  competitions: () => {
+    // http://api.football-data.org/v2/competitions/
+    // fake data response to only include matches I have permissions to
+    return new Promise((resolve, reject) => {
+      const res = {
+        data: {
+          competitions: [
+            ["PL", "Premier League"],
+            ["WC", "FIFA World Cup"],
+            ["CL", "UEFA Champions League"],
+            ["BL1", "Bundesliga"],
+            ["DED", "Eredivisie"],
+            ["BSA", "Campeonato Brasileiro Série A"],
+            ["PD", "Primera Division"],
+            ["FL1", "Ligue 1"],
+            ["ELC", "Championship"],
+            ["PPL", "Primeira Liga"],
+            ["EC", "European Championship"],
+            ["SA", "Serie A"],
+            ["CLI", "Copa Libertadore"],
+          ],
+        },
+      };
+      resolve(res);
+    });
   },
-  competition: (id) => {
-    return axios.get(
-      request.URL + request.URL + "competitions/" + id + "/matches",
-      request
-    );
+
+  // GET http://api.football-data.org/v2
+  //   /competitions/{id}/matches?dateFrom={}&dateTo={}
+  matches: (id, dateFrom, dateTo) => {
+    const url = `${request.URL}competitions/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+    // console.log("data:competition", url);
+    return axios.get(url, request);
   },
 };
 
