@@ -2,7 +2,6 @@ import axios from "axios";
 
 const request = {
   URL: "https://api.football-data.org/v2/",
-  responseType: "json",
   timeout: 15000,
   headers: {
     "X-Auth-Token": "4346ebc0fe37409997ff960499a8dd23",
