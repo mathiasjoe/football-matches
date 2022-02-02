@@ -19,4 +19,3 @@ Example app to access <https://www.football-data.org/>
 
 - [] Show played, in-progress, and completed matches differently?
 - [] Enexpected token '<' App.js line 1.
-- [] Update README.md
