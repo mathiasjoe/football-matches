@@ -4,6 +4,7 @@ import "./Matches.css";
 
 export default function Matches({ matches }) {
   return (
+    // Headers of the Matches table
     <Table>
       <thead>
         <tr>
@@ -24,6 +25,7 @@ export default function Matches({ matches }) {
 }
 
 function Match({ match }) {
+  //Body of the Matches table
   const matchDate = new Date(match.utcDate);
   return (
     <tr>

@@ -9,8 +9,6 @@ export default function SearchParams({
   setSelectedCompetition,
   setSelectedDate,
 }) {
-  // console.log("SearchParams", { selectedCompetition, selectedDate });
-
   return (
     <div className="search-params">
       <form>

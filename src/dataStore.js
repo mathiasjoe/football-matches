@@ -40,7 +40,6 @@ const dataStore = {
   //   /competitions/{id}/matches?dateFrom={}&dateTo={}
   matches: (id, dateFrom, dateTo) => {
     const url = `${request.URL}competitions/${id}/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`;
-    // console.log("data:competition", url);
     return axios.get(url, request);
   },
 };
